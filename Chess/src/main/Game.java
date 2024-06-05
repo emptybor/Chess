@@ -139,7 +139,20 @@ public class Game extends JFrame implements Runnable{
 	public void setMenu(Menu menu) {
 		this.menu = menu;
 	}
-	
-	
 
+	public MyMouseListener getMyMouseListener() {
+		return myMouseListener;
+	}
+
+	public void setMyMouseListener(MyMouseListener myMouseListener) {
+		this.myMouseListener = myMouseListener;
+	}
+
+	public MyKeyListener getMyKeyListener() {
+		return myKeyListener;
+	}
+
+	public void setMyKeyListener(MyKeyListener myKeyListener) {
+		this.myKeyListener = myKeyListener;
+	}
 }

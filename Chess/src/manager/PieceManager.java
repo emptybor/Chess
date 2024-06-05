@@ -12,6 +12,8 @@ import piece.Queen;
 import piece.Rook;
 import scenes.Playing;
 
+import static helpTools.Constants.Screen.*;
+
 public class PieceManager {
 	
 	private Playing playing;
@@ -20,8 +22,8 @@ public class PieceManager {
 	public PieceManager(Playing playing) {
 		this.playing = playing;
 		
-		initBlack();
-		initWhite();
+		initLowerPieces(playing.getColorManager().getCurrentColor());
+		initHigherPieces(playing.getColorManager().getOppositeColor());
 		
 		for (Piece piece : pieces) {
 			piece.initImage();
@@ -29,9 +31,7 @@ public class PieceManager {
 	}
 	
 	
-	private void initBlack() {
-		
-		String color = "black";
+	private void initHigherPieces(int color) {
 		
 		pieces.add(new Pawn(0, 1, color));
 		pieces.add(new Pawn(1, 1, color));
@@ -56,9 +56,7 @@ public class PieceManager {
 
 	}
 	
-	private void initWhite() {
-		
-		String color = "white";
+	private void initLowerPieces(int color) {
 		
 		pieces.add(new Pawn(0, 6, color));
 		pieces.add(new Pawn(1, 6, color));
@@ -88,6 +86,40 @@ public class PieceManager {
 		for (Piece piece : pieces) {
 			piece.render(g);
 		}
+	}
+	
+	public int getPieceIndex(int x, int y) {
+		
+		x /= TILESIZE;
+		y /= TILESIZE;
+		
+		for (Piece piece : pieces) {
+			if(x == piece.getX()) {
+				if(y == piece.getY()) {
+					return pieces.indexOf(piece);
+				}
+			}
+		}
+		return 999;
+	}
+	
+	public boolean isSamePosition(Piece piece) {
+		
+		int id = pieces.indexOf(piece);
+		
+		if(piece.getX() == pieces.get(id).getX()) {
+			if(piece.getY() == pieces.get(id).getY()) {
+				
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
+
+	public ArrayList<Piece> getPieces() {
+		return pieces;
 	}
 	
 	

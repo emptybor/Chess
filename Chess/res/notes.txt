@@ -1,0 +1,7 @@
+-> Grab-Icon für Gedrückte Maus-Taste
+
+-> Bug mit Clicken beheben -> vielleicht boolean?
+
+-> Atlas weiter modellieren
+
+-> Movement implementieren mithilfe von Punkten
